@@ -14,7 +14,7 @@
 
 			// need tutorial box
 
-			this.build = function(ticket, options, api){
+			this.build = function(ticket, optionsObservee, api){
 				// don't know why this is here but other files have it
 				var that = this
 
@@ -23,5 +23,11 @@
 			}
 
 		})
+
+		ExtensionTester.Api.Ticket.create().then(function(newOne){
+			newOne.subject.status = 'Open'
+
+			ExtensionTester(HelloWorld, {statusField: 'status'}, {ticketId: newOne.subject._id})
+		}).done()
 	</script>
 </html>
