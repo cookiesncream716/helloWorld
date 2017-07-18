@@ -20,6 +20,11 @@
 
 				this.button = Gem.Button('click me')
 				this.add(this.button)
+
+				this.button.on('click', function(){
+					console.log('clicked button')
+					alert('Congratulations! You have made your first plugin.')
+				})
 			}
 
 		})
