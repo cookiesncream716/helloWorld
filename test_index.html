@@ -8,4 +8,20 @@
 	<script src="node_modules/proto/dist/proto.umd.js"></script>
 	<script src="node_modules/gem/dist/Gem.umd.js"></script>
 	<script src="https://tixit.me/ExtensionTester.umd.js"></script>
+	<script>
+		var HelloWorld = proto(Gem, function(superclass){
+			this.name = 'HelloWorld'
+
+			// need tutorial box
+
+			this.build = function(ticket, options, api){
+				// don't know why this is here but other files have it
+				var that = this
+
+				this.button = Gem.Button('click me')
+				this.add(this.button)
+			}
+
+		})
+	</script>
 </html>
