@@ -3,7 +3,7 @@
     	<meta charset="utf-8" />
 	</head>
 	<body>
-		<h1>test</h1>
+		<h1>rest of page</h1>
 	</body>
 	<script src="node_modules/proto/dist/proto.umd.js"></script>
 	<script src="node_modules/gem/dist/Gem.umd.js"></script>
@@ -12,13 +12,23 @@
 		var HelloWorld = proto(Gem, function(superclass){
 			this.name = 'HelloWorld'
 
-			// need tutorial box
-
 			this.build = function(ticket, optionsObservee, api){
 				// don't know why this is here but other files have it
 				var that = this
 
-				this.button = Gem.Button('click me')
+				// tutorial box
+				this.tutorial = Gem.Block(Gem.Text('This is plugin tutorial'), Gem.Button('tutorial', 'next'))
+				this.tutorial.style = Gem.Style({
+					color: 'red',
+					width: '100%',
+					border: '1px solid black',
+					padding: 5
+				})
+				this.add(this.tutorial)
+
+
+
+				this.button = Gem.Button('plugin', 'click me')
 				this.add(this.button)
 
 				this.button.on('click', function(){
