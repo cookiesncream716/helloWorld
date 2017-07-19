@@ -36,17 +36,24 @@
 					var instructions = ['First', 'Second', 'Third', 'Fourth']
 					tutorialBox.text = instructions[index]
 					index ++
+					if(index==instructions.length){
+						console.log('instructions completed')
+						that.pluginButton = Gem.Button('click me')
+						that.add(that.pluginButton)
+						that.pluginButton.on('click', function(){
+							console.log('clicked click me')
+							alert('Congratulations! You have made your first plugin.')
+						})
+					}
 				})
 
+				// this.pluginButton = Gem.Button('click me')
+				// this.add(this.pluginButton)
 
-
-				this.pluginButton = Gem.Button('click me')
-				this.add(this.pluginButton)
-
-				this.pluginButton.on('click', function(){
-					console.log('clicked click me')
-					alert('Congratulations! You have made your first plugin.')
-				})
+				// this.pluginButton.on('click', function(){
+				// 	console.log('clicked click me')
+				// 	alert('Congratulations! You have made your first plugin.')
+				// })
 			}
 
 		})
