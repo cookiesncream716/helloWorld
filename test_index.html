@@ -9,19 +9,20 @@
 	<script src="node_modules/gem/dist/Gem.umd.js"></script>
 	<script src="https://tixit.me/ExtensionTester.umd.js"></script>
 	<script>
-		var tutorialBox = Gem.Text('Ready to learn how to create a plugin?')
-		var button = Gem.Button('next')
+		// var tutorialBox = Gem.Text('Ready to learn how to create a plugin?')
+		// var button = Gem.Button('next')
 		// var button2 = Gem.Button('click me')
 
 		var HelloWorld = proto(Gem, function(superclass){
 			this.name = 'HelloWorld'
+			this.button = Gem.Button('next')
+			this.tutorialBox = Gem.Text('Ready to learn how to create a simple plugin?')
 
 			this.build = function(ticket, optionsObservee, api){
-				// don't know why this is here but other files have it
 				var that = this
 
 				// tutorial box
-				this.tutorial = Gem.Block(tutorialBox, button)
+				this.tutorial = Gem.Block(this.tutorialBox, this.button)
 				this.tutorial.style = Gem.Style({
 					color: 'red',
 					width: '100%',
@@ -31,13 +32,14 @@
 				this.add(this.tutorial)
 
 				var index = 0
-				button.on('click', function(){
+				this.button.on('click', function(){
 					console.log('clicked next')
 					var instructions = ['First', 'Second', 'Third', 'Fourth']
-					tutorialBox.text = instructions[index]
+					that.tutorialBox.text = instructions[index]
 					index ++
 					if(index==instructions.length){
 						console.log('instructions completed')
+						that.remove(that.tutorial)
 						that.pluginButton = Gem.Button('click me')
 						that.add(that.pluginButton)
 						that.pluginButton.on('click', function(){
