@@ -30,9 +30,12 @@
 				})
 				this.add(this.tutorial)
 
+				var index = 0
 				button.on('click', function(){
 					console.log('clicked next')
-					tutorialBox.text = 'First do this'
+					var instructions = ['First', 'Second', 'Third', 'Fourth']
+					tutorialBox.text = instructions[index]
+					index ++
 				})
 
 
