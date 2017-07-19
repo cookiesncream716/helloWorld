@@ -9,6 +9,10 @@
 	<script src="node_modules/gem/dist/Gem.umd.js"></script>
 	<script src="https://tixit.me/ExtensionTester.umd.js"></script>
 	<script>
+		var tutorialBox = Gem.Text('Ready to learn how to create a plugin?')
+		var button = Gem.Button('next')
+		// var button2 = Gem.Button('click me')
+
 		var HelloWorld = proto(Gem, function(superclass){
 			this.name = 'HelloWorld'
 
@@ -17,7 +21,7 @@
 				var that = this
 
 				// tutorial box
-				this.tutorial = Gem.Block(Gem.Text('This is plugin tutorial'), Gem.Button('tutorial', 'next'))
+				this.tutorial = Gem.Block(tutorialBox, button)
 				this.tutorial.style = Gem.Style({
 					color: 'red',
 					width: '100%',
@@ -26,13 +30,18 @@
 				})
 				this.add(this.tutorial)
 
+				button.on('click', function(){
+					console.log('clicked next')
+					tutorialBox.text = 'First do this'
+				})
 
 
-				this.button = Gem.Button('plugin', 'click me')
-				this.add(this.button)
 
-				this.button.on('click', function(){
-					console.log('clicked button')
+				this.pluginButton = Gem.Button('click me')
+				this.add(this.pluginButton)
+
+				this.pluginButton.on('click', function(){
+					console.log('clicked click me')
 					alert('Congratulations! You have made your first plugin.')
 				})
 			}
